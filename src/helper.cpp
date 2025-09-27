@@ -35,10 +35,12 @@ QVariantMap HelperAdaptor::prepareBenchmarkFile(const QString &benchmarkFile, in
     return m_parentHelper->prepareBenchmarkFile(benchmarkFile, fileSize, fillZeros);
 }
 
-QVariantMap HelperAdaptor::startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass,
+QVariantMap HelperAdaptor::startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass, bool continuousGeneration,
                                               int blockSize, int queueDepth, int threads, const QString &rw)
 {
-    return m_parentHelper->startBenchmarkTest(measuringTime, fileSize, randomReadPercentage, fillZeros, cacheBypass, blockSize, queueDepth, threads, rw);
+    return m_parentHelper->startBenchmarkTest(
+      measuringTime, fileSize, randomReadPercentage, fillZeros, cacheBypass,
+      continuousGeneration, blockSize, queueDepth, threads, rw);
 }
 
 QVariantMap HelperAdaptor::flushPageCache()
@@ -203,7 +205,7 @@ QVariantMap Helper::prepareBenchmarkFile(const QString &benchmarkPath, int fileS
     return {{"success", true}};
 }
 
-QVariantMap Helper::startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass,
+QVariantMap Helper::startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass, bool continuousGeneration,
                                        int blockSize, int queueDepth, int threads, const QString &rw)
 {
     if (!isCallerAuthorized()) {
@@ -219,7 +221,7 @@ QVariantMap Helper::startBenchmarkTest(int measuringTime, int fileSize, int rand
                      << QStringLiteral("--output-format=json")
                      << QStringLiteral("--ioengine=libaio")
                      << QStringLiteral("--randrepeat=0")
-                     << QStringLiteral("--refill_buffers")
+                     << QStringLiteral("--refill_buffers=%1").arg(continuousGeneration)
                      << QStringLiteral("--end_fsync=1")
                      << QStringLiteral("--direct=%1").arg(cacheBypass)
                      << QStringLiteral("--rwmixread=%1").arg(randomReadPercentage)
