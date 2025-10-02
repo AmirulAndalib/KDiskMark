@@ -1030,6 +1030,8 @@
      </property>
      <addaction name="actionTestData_Random"/>
      <addaction name="actionTestData_Zeros"/>
+     <addaction name="separator"/>
+     <addaction name="actionTestData_Continuous"/>
     </widget>
     <addaction name="menuTest_Data"/>
     <addaction name="separator"/>
@@ -1301,6 +1303,14 @@
    </property>
    <property name="text">
     <string>CoW detection</string>
+   </property>
+  </action>
+  <action name="actionTestData_Continuous">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Continuous generation</string>
    </property>
   </action>
  </widget>

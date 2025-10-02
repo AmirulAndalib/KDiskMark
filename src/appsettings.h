@@ -67,6 +67,10 @@ public:
     void setCacheBypassState(bool cacheBypassState);
     static bool defaultCacheBypassState();
 
+    bool getContinuousGenerationState() const;
+    void setContinuousGenerationState(bool continuousGenerationState);
+    static bool defaultContinuousGenerationState();
+
     bool getFlusingCacheState() const;
     void setFlushingCacheState(bool flushingCacheState);
     static bool defaultFlushingCacheState();

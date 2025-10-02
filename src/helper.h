@@ -21,8 +21,10 @@ public slots:
     Q_SCRIPTABLE QVariantMap initSession();
     Q_SCRIPTABLE QVariantMap endSession();
     Q_SCRIPTABLE QVariantMap prepareBenchmarkFile(const QString &benchmarkPath, int fileSize, bool fillZeros);
-    Q_SCRIPTABLE QVariantMap startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass,
-                                                int blockSize, int queueDepth, int threads, const QString &rw);
+    Q_SCRIPTABLE QVariantMap startBenchmarkTest(
+        int measuringTime, int fileSize, int randomReadPercentage,
+        bool fillZeros, bool cacheBypass, bool continuousGeneration,
+        int blockSize, int queueDepth, int threads, const QString &rw);
     Q_SCRIPTABLE QVariantMap flushPageCache();
     Q_SCRIPTABLE QVariantMap removeBenchmarkFile();
     Q_SCRIPTABLE QVariantMap stopCurrentTask();
@@ -47,8 +49,11 @@ public:
     QVariantMap initSession();
     QVariantMap endSession();
     QVariantMap prepareBenchmarkFile(const QString &benchmarkPath, int fileSize, bool fillZeros);
-    QVariantMap startBenchmarkTest(int measuringTime, int fileSize, int randomReadPercentage, bool fillZeros, bool cacheBypass,
-                                   int blockSize, int queueDepth, int threads, const QString &rw);
+    QVariantMap startBenchmarkTest(int measuringTime, int fileSize,
+                                   int randomReadPercentage, bool fillZeros,
+                                   bool cacheBypass, bool continuousGeneration,
+                                   int blockSize, int queueDepth, int threads,
+                                   const QString &rw);
     QVariantMap flushPageCache();
     QVariantMap removeBenchmarkFile();
     QVariantMap stopCurrentTask();

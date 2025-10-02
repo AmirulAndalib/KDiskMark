@@ -165,6 +165,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBox_MixRatio->setCurrentIndex(indexMixRatio);
 
     ui->actionTestData_Zeros->setChecked(settings.getBenchmarkTestData() == Global::BenchmarkTestData::Zeros);
+    ui->actionTestData_Continuous->setChecked(settings.getContinuousGenerationState());
     ui->actionRead_Mix->setChecked(settings.getBenchmarkMode() == Global::BenchmarkMode::ReadMix);
     ui->actionWrite_Mix->setChecked(settings.getBenchmarkMode() == Global::BenchmarkMode::WriteMix);
 
@@ -393,6 +394,10 @@ void MainWindow::resizeComboBoxItemsPopup(QComboBox *combobox)
 void MainWindow::on_actionUse_O_DIRECT_triggered(bool checked)
 {
     AppSettings().setCacheBypassState(checked);
+}
+
+void MainWindow::on_actionTestData_Continuous_triggered(bool checked) {
+    AppSettings().setContinuousGenerationState(checked);
 }
 
 void MainWindow::on_actionFlush_Pagecache_triggered(bool checked)

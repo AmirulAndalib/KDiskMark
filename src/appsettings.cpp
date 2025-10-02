@@ -222,6 +222,17 @@ bool AppSettings::defaultCacheBypassState()
 {
     return true;
 }
+bool AppSettings::getContinuousGenerationState() const {
+    return m_settings->value(QStringLiteral("Benchmark/ContinuousGeneration"), defaultContinuousGenerationState()).toBool();
+}
+
+void AppSettings::setContinuousGenerationState(bool continuousGenerationState) {
+    m_settings->setValue(QStringLiteral("Benchmark/ContinuousGeneration"), continuousGenerationState);
+}
+
+bool AppSettings::defaultContinuousGenerationState() {
+    return false;
+}
 
 bool AppSettings::getFlusingCacheState() const
 {
