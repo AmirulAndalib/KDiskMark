@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include "global.h"
 
 class AppSettings;
 class QAbstractButton;
@@ -24,7 +25,24 @@ private slots:
 
 private:
     Ui::Settings *ui;
+
     void findDataAndSet(QComboBox* comboBox, int data);
+    void populateComboBoxes();
+    void loadParamsToUI(Global::BenchmarkTest test, Global::PerformanceProfile profile,
+                        QComboBox* pattern, QComboBox* blockSize, QComboBox* queues, QComboBox* threads);
+    void saveParamsFromUI(Global::BenchmarkTest test, Global::PerformanceProfile profile,
+                          QComboBox* pattern, QComboBox* blockSize, QComboBox* queues, QComboBox* threads);
+    void applyPreset(Global::BenchmarkPreset preset);
+
+    // UI element groups for each profile/test combination
+    struct TestWidgets {
+        QComboBox* pattern;
+        QComboBox* blockSize;
+        QComboBox* queues;
+        QComboBox* threads;
+    };
+
+    TestWidgets getTestWidgets(Global::PerformanceProfile profile, Global::BenchmarkTest test);
 };
 
 #endif // SETTINGS_H
