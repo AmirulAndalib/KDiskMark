@@ -74,7 +74,14 @@ sudo snap install kdiskmark
 sudo snap connect kdiskmark:removable-media # external storages
 ````
 
-### Ubuntu based distros
+### Debian / Ubuntu based distros
+
+```bash
+sudo apt update
+sudo apt install kdiskmark
+```
+
+Ubuntu users can also use the PPA:
 ```bash
 sudo add-apt-repository ppa:jonmagon/kdiskmark
 sudo apt update
@@ -83,12 +90,12 @@ sudo apt install kdiskmark
 
 ### Arch based distros
 
-KDiskMark is included in the official [extra](https://www.archlinux.org/packages/extra/x86_64/kdiskmark/) repo. You can install it like any other package:
+Available in the [extra](https://www.archlinux.org/packages/extra/x86_64/kdiskmark/) repository:
 ```bash
 sudo pacman -Syu kdiskmark
 ```
 
-Development version can be installed from AUR `kdiskmark-git` package.
+Development version from AUR:
 ```bash
 git clone https://aur.archlinux.org/kdiskmark-git.git
 cd kdiskmark-git
@@ -97,13 +104,14 @@ makepkg -si
 
 ### Fedora
 
-KDiskMark is included in the official [Fedora](https://src.fedoraproject.org/rpms/kdiskmark/) repo. You can install it like any other package:
+Available in the [Fedora](https://src.fedoraproject.org/rpms/kdiskmark/) repository:
 ```bash
 sudo dnf install kdiskmark
 ```
 
 ### openSUSE Tumbleweed
 
+Available in the [openSUSE Factory](https://build.opensuse.org/package/show/openSUSE%3AFactory/kdiskmark) repository:
 ```bash
 sudo zypper install kdiskmark
 ```
